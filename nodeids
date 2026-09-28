@@ -1,0 +1,10 @@
+[
+  "tests/test_alerts.py::test_citizen_cannot_create_alert",
+  "tests/test_alerts.py::test_list_alerts_public",
+  "tests/test_auth.py::test_get_demo_accounts",
+  "tests/test_auth.py::test_login_demo_super_admin",
+  "tests/test_auth.py::test_login_invalid_password",
+  "tests/test_incidents_sync.py::test_offline_sync_batch_idempotency",
+  "tests/test_risk_engine.py::test_risk_calculation_critical",
+  "tests/test_risk_engine.py::test_risk_calculation_low"
+]

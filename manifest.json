@@ -1,0 +1,15 @@
+{
+  "short_name": "NER EarlyWarning",
+  "name": "AI Early Warning & Landslide Monitoring System in NER",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#070d1e",
+  "theme_color": "#14b8a6",
+  "display": "standalone"
+}

@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # Database with PostGIS extensions
+  postgis_db:
+    image: postgis/postgis:16-3.4
+    container_name: ner_disaster_postgis
+    environment:
+      POSTGRES_USER: ner_admin
+      POSTGRES_PASSWORD: ner_secure_password_2026
+      POSTGRES_DB: ner_disaster_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ner_admin -d ner_disaster_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Redis for job caching & queue
+  redis_cache:
+    image: redis:7-alpine
+    container_name: ner_disaster_redis
+    ports:
+      - "6379:6379"
+
+  # FastAPI Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ner_disaster_backend
+    environment:
+      DATABASE_URL: postgresql://ner_admin:ner_secure_password_2026@postgis_db:5432/ner_disaster_db
+      REDIS_URL: redis://redis_cache:6379/0
+      SECRET_KEY: ner_super_secret_jwt_key_prototype_2026_disaster_system
+      ENVIRONMENT: production
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgis_db:
+        condition: service_healthy
+      redis_cache:
+        condition: service_started
+
+  # React Frontend (Nginx)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ner_disaster_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgis_data:

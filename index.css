@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #070d1e;
+  color: #f1f5f9;
+}
+
+/* Custom Scrollbar for Emergency Operations */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b152d;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e305b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #14b8a6;
+}

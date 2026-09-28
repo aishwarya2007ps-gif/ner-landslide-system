@@ -1,0 +1,2 @@
+# NER Disaster Early Warning Backend
+__version__ = "1.0.0"

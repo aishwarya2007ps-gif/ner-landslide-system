@@ -1,0 +1,5 @@
+{
+  "tests/test_alerts.py::TestClient": true,
+  "tests/test_auth.py::TestClient": true,
+  "tests/test_incidents_sync.py::TestClient": true
+}
